@@ -1,0 +1,241 @@
+/* ============================================
+   世界名色画廊 - 星空主题
+   Iconic Color Palette Gallery - Starry Sky Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
+
+:root {
+    --bg-deep-space: #050510;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-border: rgba(255, 255, 255, 0.1);
+    --hover-glow: rgba(255, 255, 255, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans SC', sans-serif;
+    color: var(--text-primary);
+    background-color: var(--bg-deep-space);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Starry Background System */
+.starry-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    z-index: -1;
+    overflow: hidden;
+}
+
+/* CSS Stars */
+.stars,
+.stars2,
+.stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    animation: twinkle 200s linear infinite;
+}
+
+.stars {
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #eee, transparent),
+        radial-gradient(1px 1px at 40px 70px, #fff, transparent),
+        radial-gradient(1px 1px at 50px 160px, #ddd, transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #fff, transparent),
+        radial-gradient(1px 1px at 160px 120px, #ddd, transparent);
+    background-size: 200px 200px;
+    opacity: 0.8;
+}
+
+.stars2 {
+    background-image:
+        radial-gradient(2px 2px at 150px 150px, #fff, transparent),
+        radial-gradient(2px 2px at 10px 10px, #fff, transparent);
+    background-size: 300px 300px;
+    animation-delay: -50s;
+    opacity: 0.5;
+}
+
+@keyframes twinkle {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-1000px);
+    }
+}
+
+/* Header */
+.gallery-header {
+    text-align: center;
+    padding: 80px 20px 60px;
+}
+
+.main-title {
+    font-size: 3rem;
+    background: linear-gradient(120deg, #fff, #a2c2e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.description {
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Grid Layout */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px 100px;
+}
+
+/* Color Card (Floating Glass Style) */
+.color-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.color-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Color Swatch */
+.color-swatch-wrapper {
+    height: 180px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.canvas {
+    width: 100%;
+    height: 100%;
+    background-color: var(--paint-color);
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.color-card:hover .canvas {
+    transform: scale(1.1);
+}
+
+/* Info Section */
+.card-info {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.color-title {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.color-en {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 16px;
+    font-style: italic;
+}
+
+.color-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #ddd;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.color-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #888;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 12px;
+}
+
+.color-meta strong {
+    color: #bbb;
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 1000;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-title {
+        font-size: 2.2rem;
+    }
+
+    .gallery-container {
+        padding: 0 20px 80px;
+        grid-template-columns: 1fr;
+    }
+}
