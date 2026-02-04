@@ -1,5 +1,5 @@
 /**
- * 世界名色画廊 - 交互脚本
+ * 名色艺术画廊 - 交互脚本
  * Iconic Color Palette Gallery - Interactive Script
  */
 
